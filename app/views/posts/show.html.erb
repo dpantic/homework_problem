@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Url:</b>
+  <%=  @post.url %>
+  <br/>
+ <!-- <span> This link is submitted by <b><%= @post.user.name %> </span></b>
+  <br/> is the same as below -->
+  <b>Posted by:</b>
+  <%= @post.user.name%>
+  <hr/>
+  <b>Comments</b>
+  <br/>
+  
+  <% @post.comments.each do |comment| %>
+    <%= comment.body %> 
+    commented by: <%= comment.user.name %>
+  <% end %>
+<hr/>
+
+
+
+
+<%= form_for @post.comments.build, html: {style: "padding-left: 20px"} do |f| %>
+  <p>
+<label> New Comment </label><br/>
+   <%= f.text_area :body, :size => '40 x 5' %>
+   </p>
+   <label> Comment as </label>
+      <br/>
+      <%= f.select :user_id, User.all.map {|user| [user.name, user.id]} %>
+     <div class"actions">
+      <%= f.submit value: "Submit" %>
+      </div>
+    <% end %>
+
+
+
+<!-- <%= link_to 'Add a comment', new_comment_path %> -->aha
+<br/>
+<%= link_to 'Edit', edit_post_path(@post) %> | 
+<%= link_to 'Back', posts_path %> 
+

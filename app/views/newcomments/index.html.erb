@@ -1,0 +1,27 @@
+<h1>Listing newcomments</h1>
+
+<table>
+  <tr>
+    <th>Body</th>
+    <th>xxx</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @newcomments.each do |newcomment| %>
+  <tr>
+    <td><%= newcomment.body %></td>
+    <td><%= newcomment.body_id %></td>
+    <td><%= link_to 'Show', newcomment %></td>
+    <td><%= link_to 'Edit', edit_newcomment_path(newcomment) %></td>
+    <td><%= link_to 'Destroy', newcomment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Newcomment', new_newcomment_path %>
+<br/>
+<%= link_to 'List posts', posts_path %>
